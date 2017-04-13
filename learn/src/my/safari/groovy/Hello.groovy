@@ -5,7 +5,6 @@ package my.safari.groovy
  */
 
 println "Hello World"
-println InetAddress.localHost
 
 int x = 3
 int y = 4
@@ -41,3 +40,25 @@ println s[0..3]
 s = "This is a string ${1+1}"
 println s
 println s.class.name
+
+/*
+ * Other String literals
+ */
+
+def sp = '''\
+To be or not to be
+that is the question.
+'''
+println sp.readLines()
+println sp.class.name
+
+def zip = /\d{5}(-\d{4})?/
+println zip
+println zip.class.name
+def pat = ~/\d{5}(-\d{4})?/
+println pat.class.name
+
+println '12345-9876' ==~ zip
+assert '12345' ==~ zip
+assert '12345-1234' ==~ zip
+assert '12345 12345-1234 1234'.findAll(zip) == ['12345', '12345-1234']
