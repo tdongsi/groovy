@@ -18,3 +18,14 @@ println nums[1..<3]
 
 // List's operator overloading defined in
 // http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/List.html
+
+def map = [a: 1, b: 2, c: 2]
+map.d = 3
+map['e'] = 1
+println map
+println map.getClass().name
+
+def mNums = [3, 1, 4,1,5,9,2,6,5] as Set
+println mNums
+println mNums.class.name
+
