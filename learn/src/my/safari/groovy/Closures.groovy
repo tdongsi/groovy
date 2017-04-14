@@ -26,3 +26,23 @@ println nums.collect { it*2 }
 // Spread dot operator
 println nums *. multiply(2)
 
+class Department {
+    Manager boss
+}
+class Manager {
+    String name
+}
+Department d1 = new Department(boss: new Manager(name: 'ABC'))
+Department d2 = new Department()
+println d1 ?. boss ?. name
+// Standard d2.boss.name will throw NPE.
+println d2 ?. boss ?. name
+
+// Spaceship operator
+println 1 <=> 2
+
+// Groovy truth
+// Elvis operator
+String input
+String greet = 'Hello ' + (input ?: 'World')
+println greet
