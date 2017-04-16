@@ -29,3 +29,37 @@ def mNums = [3, 1, 4,1,5,9,2,6,5] as Set
 println mNums
 println mNums.class.name
 
+// Demo: Sorting strings
+List<String> strings = 'this is a list of strings'.split()
+
+// Java way: natural ordering
+Collections.sort(strings)
+println strings
+
+// Java: sort by length
+Collections.sort(strings, new Comparator<String>() {
+    int compare(String s1, String s2) {
+        s1.size() <=> s2.size()
+    }
+})
+println strings
+println strings.collect { it.size() }
+println strings *. size()
+
+// Groovy: natural ordering and not destructive
+println strings.sort(false)
+println strings
+
+// Groovy: sort by length in reverse
+println strings.sort(false) { s1, s2 ->
+    s2.size() <=> s1.size()
+}
+
+// Groovy: with one-param closure
+println strings.sort(false) { it.size() }
+
+// Groovy: sort by length, then reverse-alphabetically
+println strings.sort(false) { String s1, String s2 ->
+    (s1.size() <=> s2.size()) ?: s2 <=> s1
+}
+
