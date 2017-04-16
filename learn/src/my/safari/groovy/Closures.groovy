@@ -46,3 +46,6 @@ println 1 <=> 2
 String input
 String greet = 'Hello ' + (input ?: 'World')
 println greet
+
+// Demo: Closure as filter
+println ((-3..3).findAll { it > 0 } )
