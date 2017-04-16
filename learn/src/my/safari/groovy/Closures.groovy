@@ -49,3 +49,7 @@ println greet
 
 // Demo: Closure as filter
 println ((-3..3).findAll { it > 0 } )
+
+(0..15).each { Number n ->
+    println Integer.toBinaryString(n).padLeft(4, '0')
+}

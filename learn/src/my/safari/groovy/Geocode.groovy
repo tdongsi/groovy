@@ -31,3 +31,8 @@ String jsonTxt = "$JSON_BASE$qs".toURL().text
 // println jsonTxt
 def json = new JsonSlurper().parseText(jsonTxt)
 println json.value.joke
+
+// Demo
+String HOMEPAGE = 'http://oreilly.com'
+println HOMEPAGE.toURL().text.readLines() *. size()
+// println HOMEPAGE.toURL().text
