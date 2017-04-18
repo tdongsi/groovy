@@ -11,7 +11,7 @@ String password = System.getenv('GITHUB_PASSWORD')
 
 String GITHUB_API = 'https://api.github.com/repos'
 String repo = 'groovy'
-String PR_ID = '1' // Pull request ID
+String PR_ID = '2' // Pull request ID
 
 String url = "${GITHUB_API}/${username}/${repo}/pulls/${PR_ID}"
 println "Querying ${url}"
