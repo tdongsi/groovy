@@ -1,4 +1,4 @@
-package my.safari.groovy
+package my.safari.groovy.basic
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString

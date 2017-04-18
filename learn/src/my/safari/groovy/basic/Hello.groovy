@@ -1,4 +1,4 @@
-package my.safari.groovy
+package my.safari.groovy.basic
 
 /**
  * Created by tdongsi on 3/30/17.
