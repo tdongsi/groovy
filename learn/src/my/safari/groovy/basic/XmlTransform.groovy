@@ -26,5 +26,5 @@ xml.servers.server.each { node ->
 }
 
 def outBuilder = new StreamingMarkupBuilder()
-def outWriter = outFile.newWriter()
-XmlUtil.serialize( outBuilder.bind{ mkp.yield xml }, outWriter )
+def outWriter = new FileWriter('temp.xml')
+XmlUtil.serialize( xml, outWriter )
