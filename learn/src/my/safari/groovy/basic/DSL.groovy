@@ -112,8 +112,15 @@ class GroovyDsl {
 
     static void executeBetter(Closure closure) {
         GroovyDsl body = new GroovyDsl()
+        // TRICKY: Modify the input var? Hmmm.
         closure.delegate = body
         closure()
+        println "Executing ..."
+    }
+
+    static void executeBest(Closure closure) {
+        GroovyDsl body = new GroovyDsl()
+        body.with(closure)
         println "Executing ..."
     }
 
@@ -130,6 +137,15 @@ println ""
 
 println "4) DSL-style Groovy implementation"
 GroovyDsl.executeBetter {
+    withEnv("PATH=/usr/bin")
+    echo("Starting pipeline")
+    sh("ls .")
+    error("Error here")
+}
+println ""
+
+println "4b) DSL-style Groovy (better) implementation"
+GroovyDsl.executeBest {
     withEnv("PATH=/usr/bin")
     echo("Starting pipeline")
     sh("ls .")
