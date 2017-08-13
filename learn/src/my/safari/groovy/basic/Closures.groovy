@@ -13,16 +13,16 @@ for (num in nums) {
     // println num
 }
 
-nums.each( { num ->
+nums.each { num ->
     // println num
 }
-)
 
 println nums.collect { it * 2 }         // map
     .findAll { it % 3 == 0 }    // filter
     .sum()                      // reduce
 
-println nums.collect { it*2 }
+def factor = 2
+println nums.collect { it*factor }
 // Spread dot operator
 println nums *. multiply(2)
 
