@@ -110,12 +110,29 @@ class GroovyDsl {
         println "Executing ..."
     }
 
+    static void executeBetter(Closure closure) {
+        GroovyDsl body = new GroovyDsl()
+        closure.delegate = body
+        closure()
+        println "Executing ..."
+    }
+
 }
 
 println "3) Standard Groovy implementation"
-GroovyDsl.execute { it ->
-    it.withEnv("PATH=/usr/bin")
-    it.echo("Starting pipeline")
-    it.sh("ls .")
-    it.error("Error here")
+GroovyDsl.execute { dsl ->
+    dsl.withEnv("PATH=/usr/bin")
+    dsl.echo("Starting pipeline")
+    dsl.sh("ls .")
+    dsl.error("Error here")
 }
+println ""
+
+println "4) DSL-style Groovy implementation"
+GroovyDsl.executeBetter {
+    withEnv("PATH=/usr/bin")
+    echo("Starting pipeline")
+    sh("ls .")
+    error("Error here")
+}
+println ""
