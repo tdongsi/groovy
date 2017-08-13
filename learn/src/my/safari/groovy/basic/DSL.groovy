@@ -1,36 +1,34 @@
 package my.safari.groovy.basic
 
-import groovy.xml.StreamingMarkupBuilder
-import groovy.xml.XmlUtil
-
 /**
- * Created by tdongsi on 4/16/17.
+ * Java style for Build pattern
+ * Try to simulate some kind of DSL like Pipeline steps in Jenkins
  */
+class JavaDsl {
 
-def MYFILE = '/Users/tdongsi/Matrix/Aqueduct/settings.xml'
-def inFile = new File( MYFILE )
-def outFile = new File( 'temp.xml')
-def xml = new XmlSlurper(false, false).parse(inFile)
+    void echo(String message) {
+        println "Echo: $message"
+    }
 
-println xml.servers.server[0].username
-println xml.servers.server[0].password
+    void sh(String script) {
+        println "Executing: $script"
+    }
 
-/*
-xml.servers.server[0].username = 'user101'
-xml.servers.server[0].password = 'password123'
-*/
+    void error(String message) {
+        println "Error here: $message"
+    }
 
-xml.servers.server.each { node ->
-    node.username = 'user101'
-    node.password = 'password123'
+    // A more advanced DSL
+    void withEnv(String var) {
+        println "Using: $var"
+        println "Executing ..."
+    }
+
 }
 
-def outBuilder = new StreamingMarkupBuilder()
-def outWriter = outFile.newWriter()
-XmlUtil.serialize( outBuilder.bind{ mkp.yield xml }, outWriter )
+JavaDsl javaDsl = new JavaDsl()
+javaDsl.echo("Starting pipeline")
+javaDsl.sh("ls .")
+javaDsl.error("Error here")
+javaDsl.withEnv("PATH=/usr/bin")
 
-/*
-infile.withWriter { outWriter ->
-    XmlUtil.serialize( new StreamingMarkupBuilder().bind( mkp.yield xml ), outWriter)
-}
-*/
