@@ -11,7 +11,7 @@ class JavaDsl {
     }
 
     void sh(String script) {
-        println "Executing: $script"
+        println "Shell: $script"
     }
 
     void error(String message) {
@@ -51,7 +51,7 @@ class JavaBuilderDsl {
     }
 
     JavaBuilderDsl sh(String script) {
-        println "Executing: $script"
+        println "Shell: $script"
         return this
     }
 
@@ -92,7 +92,7 @@ class GroovyDsl {
     }
 
     def sh(String script) {
-        println "Executing: $script"
+        println "Shell: $script"
     }
 
     def error(String message) {
