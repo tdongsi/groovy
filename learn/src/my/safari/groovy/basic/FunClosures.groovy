@@ -46,22 +46,3 @@ println upperCaseName()
 // 2) delegate can be used transparently.
 
 // Memoization: The cache used in all memoize variants is a LRU cache.
-
-def inside = { Closure body ->
-    println "Inside"
-    body()
-}
-
-def outside = { Closure body ->
-    println "Outside"
-    body()
-}
-
-def myFunc = { a, b ->
-    println "${a+b}"
-}
-
-def newFunc = inside( outside( myFunc ))
-newFunc(1,2)
-def newFunc2 = outside(insdie(myFunc))
-newFunc2(1,2)
