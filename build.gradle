@@ -19,3 +19,21 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+task copyDependenciesToLocalDir(type: Copy) {
+    from configurations.cargo.asFileTree
+    into "${System.properties['user.home']}/libs/cargo"
+}
+
+// // Using local file system
+// dependencies {
+//     cargo fileTree(dir: "${System.properties['user.home']}/libs/cargo", include: '*.jar')
+// }
+
+tasks.register('printDependencies').configure {
+    doLast {
+        configurations.getByName('cargo').each { dep ->
+            println dep
+        }
+    }
+}
